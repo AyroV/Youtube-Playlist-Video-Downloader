@@ -39,18 +39,6 @@ if(operation_type_1 == "1"):
         audioClip.close()
         videoClip.close()
 
-        choice = input("Do you want to remove 'EVERY'.mp4 file in this directory? (Y\\N): ")
-        if(choice.capitalize() == "Y"):
-        dir_name = os.path.dirname(os.path.realpath(__file__))
-        test = os.listdir(dir_name)
-        for item in test:
-            if item.endswith(".mp4"):
-                os.remove(os.path.join(dir_name, item))
-        
-        else:
-            print("Wrong input, no files were removed.")
-            exit()
-
 elif(operation_type_1 == "2"):
     playlist_link = input("Playlist Link: ")
     try:
@@ -77,18 +65,22 @@ elif(operation_type_1 == "2"):
             audioClip.close()
             videoClip.close()
 
-    choice = input("Do you want to remove 'EVERY'.mp4 file in this directory? (Y\\N): ")
-    if(choice.capitalize() == "Y"):
-    dir_name = os.path.dirname(os.path.realpath(__file__))
-    test = os.listdir(dir_name)
-    for item in test:
-        if item.endswith(".mp4"):
-            os.remove(os.path.join(dir_name, item))
-
     else:
         print("Wrong input, no files were removed.")
         exit()
 
 else:
     print("Wrong Input. Terminating...")
+    exit()
+
+
+choice = input("Do you want to remove 'EVERY'.mp4 file in this directory? (Y\\N): ")
+if(choice.capitalize() == "Y"):
+    dir_name = os.path.dirname(os.path.realpath(__file__))
+    test = os.listdir(dir_name)
+    for item in test:
+        if item.endswith(".mp4"):
+            os.remove(os.path.join(dir_name, item))
+else:
+    print("No files were removed.")
     exit()
