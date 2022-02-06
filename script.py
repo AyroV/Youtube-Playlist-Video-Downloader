@@ -53,7 +53,6 @@ elif(operation_type_1 == "2"):
         except Exception as e:
             print("Something is wrong with the video, it is probably unavailable. Skipping this video.")
             print(e)
-            print()
             continue
         if(operation_type_2.capitalize() == "Y"):
             mp3_file = mp4_file.split('\\')[-1].split('.')[0] + ".mp3"
@@ -65,22 +64,21 @@ elif(operation_type_1 == "2"):
             audioClip.close()
             videoClip.close()
 
-    else:
-        print("Wrong input, no files were removed.")
-        exit()
-
 else:
     print("Wrong Input. Terminating...")
     exit()
 
-
-choice = input("Do you want to remove 'EVERY'.mp4 file in this directory? (Y\\N): ")
-if(choice.capitalize() == "Y"):
-    dir_name = os.path.dirname(os.path.realpath(__file__))
-    test = os.listdir(dir_name)
-    for item in test:
-        if item.endswith(".mp4"):
-            os.remove(os.path.join(dir_name, item))
-else:
-    print("No files were removed.")
-    exit()
+if(operation_type_2.capitalize() == 'Y'):
+    choice = input("Do you want to remove 'EVERY'.mp4 file in this directory? (Y\\N): ")
+    if(choice.capitalize() == "Y"):
+        dir_name = os.path.dirname(os.path.realpath(__file__))
+        files = os.listdir(dir_name)
+        remove_count = 0
+        for file in files:
+            if file.endswith(".mp4"):
+                os.remove(os.path.join(dir_name, file))
+                remove_count += 1
+        print(f"{remove_count} files were removed.")
+    else:
+        print("No files were removed.")
+        exit()
