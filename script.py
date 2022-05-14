@@ -71,7 +71,7 @@ else:
 if(operation_type_2.capitalize() == 'Y'):
     choice = input("Do you want to remove 'EVERY'.mp4 file in this directory? (Y\\N): ")
     if(choice.capitalize() == "Y"):
-        dir_name = os.path.dirname(os.path.realpath(__file__))
+        dir_name = os.getcwd()
         files = os.listdir(dir_name)
         remove_count = 0
         for file in files:
